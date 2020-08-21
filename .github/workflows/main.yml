@@ -15,6 +15,11 @@ jobs:
         go-version: ${{ matrix.go-version }}
     - name: Checkout code
       uses: actions/checkout@v2
+    - name: Dependencies
+      run: |
+        go get github.com/go-sql-driver/mysql
+        go get github.com/aws/aws-lambda-go/events
+        go get github.com/aws/aws-lambda-go/lambda
     - name: Build
       run: go build ./main.go
     - name: zip
